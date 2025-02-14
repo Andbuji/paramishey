@@ -23,12 +23,12 @@
         margin-bottom: 20px;
         color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        transition: transform 1s ease-in-out, font-size 1s ease-in-out;
       }
 
-      .container {
-        position: relative;
-        width: 300px;
-        height: 400px;
+      h1.small {
+        font-size: 2rem;
+        transform: translateY(-50px);
       }
 
       .romantic-message {
@@ -36,15 +36,16 @@
         color: white;
         margin-top: 5px;
         opacity: 0;
-        transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out, font-size 1s ease-in-out;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }
 
       .romantic-message.show {
         opacity: 1;
+        font-size: 1.8rem;
+        transform: translateY(-40px);
       }
 
-      /* Botones */
       .buttons {
         margin-top: 20px;
         transition: opacity 1s ease-in-out;
@@ -87,8 +88,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-        z-index: -1; /* Poner el iframe detrás del texto */
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
         border: none;
       }
 
@@ -97,6 +98,18 @@
         margin-top: 20px;
         width: 300px;
         height: 300px;
+      }
+
+      @media (max-width: 768px) {
+        h1.small {
+          font-size: 2rem;
+          transform: translateY(-70px);
+        }
+
+        .romantic-message.show {
+          font-size: 1.8rem;
+          transform: translateY(-100px);
+        }
       }
     </style>
   </head>
@@ -126,11 +139,12 @@
       <br />
       Eres todo lo que está bien.
     </div>
-    <div class></div>
+
     <script>
       function bloom() {
         document.getElementById("titulo").innerText =
           "¡Feliz San Valentín mi amor!";
+        document.getElementById("titulo").classList.add("small");
         document.getElementById("flower-container").style.display = "block";
         document.querySelector(".buttons").classList.add("hide");
         document.getElementById("romanticMessage").classList.add("show");
